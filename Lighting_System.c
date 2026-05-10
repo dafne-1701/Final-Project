@@ -10,13 +10,35 @@
 *   PB3 - RGB Blue LED
 */
 
+// RED 0x02 0010
+// GREEN 0x04 0100
+// BLUE 0x08 1000
 #include "Lighting_System.h"
 
-void Lighting_Studio_mode(void)
-{
-  // RGB turned off in case it is on beforehand
-  GPIOB -> DATA &= ~0x0E;
+static uint8_t current_mode = 0;
 
-  // Turn on White LED lights
-  GPIOB -> DATA |= 0x01;
+void Lighting_Off(void)
+{
+  GPIOB -> DATA &= ~0x0F;
 }
+
+void Lighting_Studio_Mode(void)
+{
+  Lighting_Off();
+  GPIOB -> DATA |= WHITE;
+}
+
+void Lighting_Party_Mode(void)
+{
+  static uint8_t color = RED;
+  Lighting_Off();
+  GPIOB -> DATA |= color; // Starts at Red Color
+
+  color *= 2; // goes from RED -> GREEN -> BLUE
+
+  if (color > BLUE)
+{
+  color = RED;
+ }
+}
+  

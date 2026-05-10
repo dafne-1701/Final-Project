@@ -53,9 +53,19 @@ if (mode == 0)
 if (mode == 2)
 {
   Lighting_Party_Mode();
-SysTick_Delay1ms(300);
+  SysTick_Delay1ms(300);
     }
   }
   // PHOTO BUTTON TRIGGERING PHOTO
-  // UART
+  // UART INSERTION HERE
+  // FOR LIGHT SYNCING WITH PHOTO
+  if ((GPIOE -> DATA & PHOTO_BUTTON) == 0)
+  {
+    SysTick_Delay1ms(20);
+    while ((GPIOE->DATA & PHOTO_BUTTON) == 0);
+
+    Lighting_Countdown(); // Countdown Sequence
+    Lighting_Studio_Mode(); // Imitates a Flash
+    SysTick_Delay1ms(1000);
+    Lighting_Off();
 }

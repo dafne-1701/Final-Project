@@ -9,3 +9,6 @@
 
 // GPIO B Initialization
 void GPIO_PortB_Init(void);
+
+// GPIO E Intialization
+void GPIO_PortE_Init(void);

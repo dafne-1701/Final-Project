@@ -8,11 +8,13 @@
 *   PB1 - RGB Red LED
 *   PB2 = PGB Green LED
 *   PB3 - RGB Blue LED
+*   PB4 - RGB Yellow LED
 */
 
-// RED 0x02 0010
-// GREEN 0x04 0100
-// BLUE 0x08 1000
+// RED 0x02 0000 0010
+// GREEN 0x04 0000 0100
+// BLUE 0x08 0000 1000
+// YELLOW 0x10 0001 0000
 #include "Lighting_System.h"
 
 static uint8_t current_mode = 0;

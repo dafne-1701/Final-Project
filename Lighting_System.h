@@ -27,3 +27,8 @@ void Lighting_Studio_Mode(void);
 * @brief Used to activate a sequence of RED, GREEN, BLUE Leds for a "Fun" Mode
 **/
 void Lighting_Party_Mode(void);
+
+/**
+* @brief Used to sync with the Countdown on when the photo will be taken
+**/
+void Lighting_Countdown(void);

@@ -42,8 +42,14 @@ void Lighting_Party_Mode(void)
  }
 }
 
-void Lighting_Countdown()
+void Lighting_Countdown(void)
 {
-  return 0;
+  for (int i = 0; i < 3; i++)
+    {
+      GPIOB -> DATA |= YELLOW;
+      SysTick_Delay1ms(700); // Yellow LED on
+
+      GPIOB -> DATA &= ~YELLOW; // Yellow LED off
+      SysTick_Delay1ms(300);
 }
   

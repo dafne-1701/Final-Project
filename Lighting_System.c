@@ -17,11 +17,9 @@
 // YELLOW 0x10 0001 0000
 #include "Lighting_System.h"
 
-static uint8_t current_mode = 0;
-
 void Lighting_Off(void)
 {
-  GPIOB -> DATA &= ~0x0F;
+  GPIOB -> DATA &= ~0x1F;
 }
 
 void Lighting_Studio_Mode(void)
@@ -42,5 +40,10 @@ void Lighting_Party_Mode(void)
 {
   color = RED;
  }
+}
+
+void Lighting_Countdown()
+{
+  return 0;
 }
   

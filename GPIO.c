@@ -8,8 +8,9 @@
 // PB0: Studio White Lights
 // PB1: Party RED Light
 // PB2: Party GREEN Light
-// PB3: Party BLUE light
-// PB3-0: 0x0F
+// PB3: Party BLUE Light
+// PB4: COUNTDOWN YELLOW Light
+// PB4-0: 0x1F
 // PORT E: For Button Handling
 // PE2: Lighting Selection Button
 // PE3: "Take Photo" Button
@@ -26,11 +27,11 @@
 void GPIO_PortB_Init(void)
 {
   SYSCTL -> RCGCGPIO |= 0x02; // Port B Clock Enabled
-  GPIOB->DIR   |=  0x0F; // Output Pins
-  GPIOB->AFSEL &= ~0x0F; // GPIO function
-  GPIOB->AMSEL &= ~0x0F;
-  GPIOB->DEN   |=  0x0F; // Digital enable
-  GPIOB->DATA  &= ~0x0F; // Intially off
+  GPIOB->DIR   |=  0x1F; // Output Pins
+  GPIOB->AFSEL &= ~0x1F; // GPIO function
+  GPIOB->AMSEL &= ~0x1F;
+  GPIOB->DEN   |=  0x1F; // Digital enable
+  GPIOB->DATA  &= ~0x1F; // Intially off
 
 }
 

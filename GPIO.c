@@ -19,6 +19,7 @@
 #define RED 0x02
 #define GREEN 0x04
 #define BLUE 0x08
+#define YELLOW 0x10
 
 // PE3: Used for 
 #include "GPIO.h"

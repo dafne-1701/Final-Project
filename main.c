@@ -27,6 +27,7 @@ SysTick_Delay_Init();
 
 while(1)
 {
+  // LIGHTING MODES FOR LIGHT_BUTTON
   if ((GPIOE -> DATA & LIGHT_BUTTON) == 0) // Button is Pressed
 {
   SysTick_Delay1ms(20);
@@ -55,4 +56,6 @@ if (mode == 2)
 SysTick_Delay1ms(300);
     }
   }
+  // PHOTO BUTTON TRIGGERING PHOTO
+  // UART
 }

@@ -10,19 +10,37 @@
 // PB2: Party GREEN Light
 // PB3: Party BLUE light
 // PB3-0: 0x0F
+// PORT E: For Button Handling
+// PE2: Lighting Selection Button
+// PE3: "Take Photo" Button
 
+#define WHITE 0x01
+#define RED 0x02
+#define GREEN 0x04
+#define BLUE 0x08
 
 // PE3: Used for 
 #include "GPIO.h"
 
-// INITIALIZATION OF PORT B
+// Initialization for Port B - LEDs
 void GPIO_PortB_Init(void)
 {
-  SYSCTL -> RCGCGPIO |= 0x02; // Port B clock on
+  SYSCTL -> RCGCGPIO |= 0x02; // Port B Clock Enabled
   GPIOB->DIR   |=  0x0F; // Output Pins
   GPIOB->AFSEL &= ~0x0F; // GPIO function
   GPIOB->AMSEL &= ~0x0F;
   GPIOB->DEN   |=  0x0F; // Digital enable
   GPIOB->DATA  &= ~0x0F; // Intially off
 
+}
+
+// Initialization of Port E (Buttons)
+  void GPIO_PortE_Init(void)
+{
+  SYSCTL -> RCGCGPIO |= 0x10; // Port E Clock Enabled
+  GPIOE -> DIR &= ~0x0C; // PE3:2 Input Buttons
+  GPIOE -> AFSEL &= ~0x0C; // GPIO function
+  GPIOE -> AMSEL &= ~0x0C; // Analog Func Disabled
+  GPIOE -> DEN |= 0x0C; // Digital Enable Functionality
+  GPIOE -> PUR |= 0x0C; // Pull-Up Resistors Enabled
 }

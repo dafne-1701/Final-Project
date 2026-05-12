@@ -45,4 +45,4 @@ void GPIO_PortB_Init(void)
   GPIOE -> AMSEL &= ~0x0C; // Analog Func Disabled
   GPIOE -> DEN |= 0x0C; // Digital Enable Functionality
   GPIOE -> PUR |= 0x0C; // Pull-Up Resistors Enabled
-}
+}	

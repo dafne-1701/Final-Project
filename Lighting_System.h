@@ -12,6 +12,7 @@
 #define RED 0x02
 #define GREEN 0x04
 #define BLUE 0x08
+#define YELLOW 0x10
 
 /**
 * @brief Used to turn all the LEDs off before going into Party or Studio mode. 

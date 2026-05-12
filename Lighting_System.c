@@ -15,7 +15,15 @@
 // GREEN 0x04 0000 0100
 // BLUE 0x08 0000 1000
 // YELLOW 0x10 0001 0000
+
+#define WHITE 0x01
+#define RED 0x02
+#define GREEN 0x04
+#define BLUE 0x08
+#define YELLOW 0x10
+
 #include "Lighting_System.h"
+#include "SysTick_Delay.h"
 
 void Lighting_Off(void)
 {
@@ -47,9 +55,10 @@ void Lighting_Countdown(void)
   for (int i = 0; i < 3; i++)
     {
       GPIOB -> DATA |= YELLOW;
-      SysTick_Delay1ms(700); // Yellow LED on
+      SysTick_Delay1ms(600); // Yellow LED on
 
       GPIOB -> DATA &= ~YELLOW; // Yellow LED off
-      SysTick_Delay1ms(300);
+      SysTick_Delay1ms(400);
 }
+		}
   

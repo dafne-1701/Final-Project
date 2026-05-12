@@ -65,30 +65,16 @@ while(1)
   // PHOTO BUTTON
   if ((GPIOE->DATA & PHOTO_BUTTON) == 0)     // Checks for button status
   {
-		GPIOB -> DATA |= YELLOW;
-		
 		UART0_Output_String("SNAP\n");
     SysTick_Delay1ms(250);
-		
-		GPIOB -> DATA &= ~YELLOW;
-		
-    while ((GPIOE->DATA & PHOTO_BUTTON) == 0);
-		
-    if (mode == 0)
-    {
-      Lighting_Off();
-    }
-    else if (mode == 1)
-    {
-      Lighting_Studio_Mode();
-    }
-    else if (mode == 2)
-		{
-			Lighting_Countdown();
-			Lighting_Studio_Mode();
 
-      SysTick_Delay1ms(100);
-		}
+		Lighting_Countdown();
+		Lighting_Studio_Mode();
+
+    SysTick_Delay1ms(100);
+		Lighting_Off();
+		
+		while ((GPIOE->DATA & PHOTO_BUTTON) == 0);
 	 }			
 	}		
  }

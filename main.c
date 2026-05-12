@@ -10,7 +10,6 @@
 #include "TM4C123GH6PM.h"
 #include "GPIO.h"
 #include "Lighting_System.h"
-#include "Timing.h"
 #include "SysTick_Delay.h"
 #include "UART.h"
 
@@ -33,7 +32,7 @@ while(1)
   // LIGHTING BUTTON
   if ((GPIOE->DATA & LIGHT_BUTTON) == 0)
   {
-    SysTick_Delay1ms(20);
+		SysTick_Delay1ms(50);
     while ((GPIOE->DATA & LIGHT_BUTTON) == 0);
 
     mode++;
@@ -51,13 +50,16 @@ while(1)
     {
       Lighting_Studio_Mode();
     }
+		while ((GPIOE->DATA & LIGHT_BUTTON) == 0);
+		SysTick_Delay1ms(50);
   }
+
 
   // PARTY MODE
   if (mode == 2)
   {
     Lighting_Party_Mode();
-    SysTick_Delay1ms(200);
+		SysTick_Delay1ms(100);
   }
 
   // PHOTO BUTTON
@@ -71,14 +73,6 @@ while(1)
 		GPIOB -> DATA &= ~YELLOW;
 		
     while ((GPIOE->DATA & PHOTO_BUTTON) == 0);
-
-		}
-		else
-		{
-			Lighting_Countdown();
-			Lighting_Studio_Mode();
-
-      SysTick_Delay1ms(100);
 		
     if (mode == 0)
     {
@@ -88,10 +82,13 @@ while(1)
     {
       Lighting_Studio_Mode();
     }
-    // if mode == 2, party continues automatically
-	//}
-		//}
-				
+    else if (mode == 2)
+		{
+			Lighting_Countdown();
+			Lighting_Studio_Mode();
+
+      SysTick_Delay1ms(100);
+		}
+	 }			
 	}		
-  }
-}
+ }
